@@ -10,3 +10,4 @@ module Jass
 end
 
 Jass.prepend_plugin 'rollup-plugin-vue2', 'vue2', '{include: /\.vue$/ }', Jass::Vue.root
+Jass.append_plugin 'rollup-plugin-replace', 'replace', -> { JSON.dump('process.env.NODE_ENV' => Rails.env) }, Jass::Vue.root if defined?(Rails)
